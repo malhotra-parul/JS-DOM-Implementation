@@ -1,0 +1,78 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <title>Document</title>
+   <style>
+       table, tr, td{
+           border:1px solid;
+           
+       }
+       table{
+        border-collapse: collapse;
+        width:400px;
+        height:400px;
+        text-align:center;
+       }
+
+   </style>
+</head>
+<body>
+      
+   <table id= "tenOnTen"></table>
+   <br>
+   <input type="text" id="text-box" placeholder="Enter Your Input here"> <br>
+   <br>
+   <button type= "button" onclick="onclickfn()">Click ME!</button>
+
+
+   <script>
+  
+   function drawTable(){
+       var y = 1;
+       var table = document.getElementById("tenOnTen");
+       for(let i= 1; i <=10; i++){
+           var row = table.insertRow(i-1);
+           for(let j = 1; j<=10; j++){
+               var cell = row.insertCell(j-1);
+               cell.innerHTML = y;
+               y++;
+           }
+        }
+   }
+   drawTable();
+
+   function onclickfn(){
+       var y =1;
+    var input = Number(document.getElementById("text-box").value);
+    deleteTable();
+    var table = document.getElementById("tenOnTen");
+    for(let i = 1; i<=10; i++){
+        var row= table.insertRow(i-1);
+        for(var j = 1;j<=10; j++){
+            var cell = row.insertCell(j-1);
+            if(y%input == 0){
+                cell.innerHTML = "**";
+                y++;
+            }
+            else {
+                cell.innerHTML = y;
+                y++;
+            }
+        }
+    }
+}
+
+
+function deleteTable(){
+    for(var i = document.getElementById("tenOnTen").rows.length; i>0; i--){
+        document.getElementById("tenOnTen").deleteRow(i-1);
+    }
+}
+
+
+   
+   </script>
+</body>
+</html>
